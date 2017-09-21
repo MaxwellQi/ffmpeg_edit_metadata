@@ -37,6 +37,7 @@ public:
     MTVideoFromatConvert();
     ~MTVideoFromatConvert();
     int decoder();
+    int encoder();
     void setInputFilePath(const char* inputFile);
     
     // input file
@@ -45,6 +46,10 @@ public:
     // out put file
     const char  *output_file_h264;
     const char  *output_file_yuv;
+    
+    const char *outputFilePath;
+    
+    int recordConvert(const char * filepath);
 private:
     static MTVideoFromatConvert *m_instance;
     
@@ -55,6 +60,8 @@ private:
     AVFrame         *pFrame,*pFrameYUV;
     uint8_t         *out_buffer;
     AVPacket        *packet;
+    uint8_t *        picture_buf;
+    AVFrame *        picture;
     int             y_size;
     int             got_picture;
     struct SwsContext *img_convert_ctx;
@@ -63,6 +70,8 @@ private:
     
     // input and output file path
    
-    char *outputFilePath;
+    
+    AVOutputFormat *fmt;
+    AVStream *video_st;
     
 };
