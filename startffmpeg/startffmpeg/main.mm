@@ -30,9 +30,22 @@ int main(int argc, const char * argv[]) {
     
     
     /* encoder */
-    videoFormatConvert->inputFilePath = "/Users/qizhang/Desktop/ffmpeg_video/IMG_2362.yuv";
-    videoFormatConvert->outputFilePath = "/Users/qizhang/Desktop/ffmpeg_video/result.mp4";
-    videoFormatConvert->encoder();
+//    videoFormatConvert->inputFilePath = "/Users/qizhang/Desktop/ffmpeg_video/IMG_2362.yuv";
+//    videoFormatConvert->outputFilePath = "/Users/qizhang/Desktop/ffmpeg_video/result.mp4";
+//    videoFormatConvert->encoder();
+    
+    
+    
+    /*  add metadata */
+//    videoFormatConvert->inputFilePath = "/Users/qizhang/Desktop/ffmpeg_video/IMG_2362.mp4";
+//    videoFormatConvert->outputFilePath = "/Users/qizhang/Desktop/ffmpeg_video/result.mp4";
+//    videoFormatConvert->test();
+    
+    
+
+    // add metadata
+//    videoFormatConvert->addVideoMetadata("/Users/qizhang/Desktop/ffmpeg_video/ab123.mp4", "<app>TVUAnywhere1111</app>");
+    videoFormatConvert->getVideoMetadata("/Users/qizhang/Desktop/ffmpeg_video/result.mp4");
     
     return 0;
 }

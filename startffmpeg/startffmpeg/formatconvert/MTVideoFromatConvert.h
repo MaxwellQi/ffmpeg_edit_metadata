@@ -36,42 +36,17 @@ public:
     static MTVideoFromatConvert * getInstance();
     MTVideoFromatConvert();
     ~MTVideoFromatConvert();
-    int decoder();
-    int encoder();
-    void setInputFilePath(const char* inputFile);
     
-    // input file
-    const  char *inputFilePath;
     
-    // out put file
-    const char  *output_file_h264;
-    const char  *output_file_yuv;
     
-    const char *outputFilePath;
-    
-    int recordConvert(const char * filepath);
+    /// \brief add metadata to a video
+    /// \param filepath the video's path
+    /// \param metadata metadata info
+    /// \return return 0 is success otherwise is failed
+    int addVideoMetadata(const char* filepath,const char* metadata);
+    const char* getVideoMetadata(const char* filepath);
+    int test();
 private:
     static MTVideoFromatConvert *m_instance;
-    
-    // about ffmpeg
-    AVFormatContext *pFormatCtx;
-    AVCodecContext  *pCodecCtx;
-    AVCodec         *pCodec;
-    AVFrame         *pFrame,*pFrameYUV;
-    uint8_t         *out_buffer;
-    AVPacket        *packet;
-    uint8_t *        picture_buf;
-    AVFrame *        picture;
-    int             y_size;
-    int             got_picture;
-    struct SwsContext *img_convert_ctx;
-    int             frame_cnt;
-    int             videoindex;
-    
-    // input and output file path
-   
-    
-    AVOutputFormat *fmt;
-    AVStream *video_st;
     
 };
